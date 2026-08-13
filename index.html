@@ -3,13 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3Point Detailing | Mobile Car Detailing</title>
+
+  <title>3Point Detailing | You Relax. We Detail.</title>
+  <meta name="description" content="Professional interior and exterior car detailing from 3Point Detailing. Clear pricing, quality care, and easy quote requests.">
 
   <style>
+    :root {
+      --blue: #126ee8;
+      --blue-dark: #0755b8;
+      --blue-light: #eaf3ff;
+      --navy: #071525;
+      --text: #101828;
+      --muted: #667085;
+      --white: #ffffff;
+      --background: #f7faff;
+      --border: #dfe7f2;
+      --shadow: 0 18px 50px rgba(7, 21, 37, 0.09);
+      --radius: 18px;
+    }
+
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -18,8 +34,8 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #050b14;
-      color: white;
+      color: var(--text);
+      background: var(--white);
       line-height: 1.6;
     }
 
@@ -28,457 +44,728 @@
       text-decoration: none;
     }
 
-    /* NAVBAR */
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
 
-    nav {
-      position: fixed;
+    .container {
+      width: min(1160px, 92%);
+      margin: 0 auto;
+    }
+
+    /* NAVIGATION */
+
+    header {
+      position: sticky;
       top: 0;
-      width: 100%;
-      z-index: 100;
-      padding: 20px 7%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(5, 11, 20, 0.88);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
     .logo {
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 900;
-      letter-spacing: 2px;
+      letter-spacing: -0.7px;
     }
 
     .logo span {
-      color: #168cff;
+      color: var(--blue);
     }
 
     .nav-links {
       display: flex;
-      gap: 30px;
       align-items: center;
-    }
-
-    .nav-links a {
-      color: #c8d0da;
+      gap: 28px;
       font-size: 14px;
-      transition: .2s;
+      font-weight: 700;
     }
 
     .nav-links a:hover {
-      color: #168cff;
+      color: var(--blue);
     }
 
-    .nav-button {
-      background: #168cff;
-      color: white !important;
+    .menu-button {
+      display: none;
+      border: none;
+      background: transparent;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* BUTTONS */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
       padding: 12px 20px;
-      border-radius: 6px;
-      font-weight: 700;
+      border-radius: 11px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 10px 25px rgba(18, 110, 232, 0.22);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--blue);
+      color: var(--blue);
     }
 
     /* HERO */
 
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 150px 8% 80px;
-      position: relative;
-      overflow: hidden;
       background:
-        radial-gradient(circle at 80% 40%, rgba(22,140,255,.20), transparent 35%),
-        linear-gradient(135deg, #050b14, #07182a);
+        radial-gradient(circle at 85% 20%, rgba(18, 110, 232, 0.15), transparent 35%),
+        linear-gradient(135deg, #ffffff 0%, #f4f8ff 100%);
+      padding: 90px 0;
     }
 
-    .hero::after {
-      content: "3";
-      position: absolute;
-      right: -50px;
-      bottom: -150px;
-      font-size: 700px;
-      font-weight: 900;
-      color: rgba(22,140,255,.035);
-      pointer-events: none;
-    }
-
-    .hero-content {
-      max-width: 800px;
-      position: relative;
-      z-index: 2;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 55px;
+      align-items: center;
     }
 
     .eyebrow {
-      color: #168cff;
-      font-size: 13px;
-      letter-spacing: 4px;
-      font-weight: 800;
-      margin-bottom: 20px;
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-size: 12px;
+      font-weight: 900;
     }
 
     .hero h1 {
-      font-size: clamp(55px, 9vw, 110px);
-      line-height: .92;
-      letter-spacing: -5px;
-      margin-bottom: 30px;
+      font-size: clamp(50px, 7vw, 82px);
+      line-height: 0.98;
+      letter-spacing: -4px;
+      margin: 15px 0 25px;
     }
 
     .hero h1 span {
-      color: #168cff;
+      color: var(--blue);
     }
 
     .hero p {
-      max-width: 600px;
-      color: #aab6c5;
+      max-width: 570px;
+      color: var(--muted);
       font-size: 19px;
-      margin-bottom: 35px;
     }
 
-    .buttons {
+    .hero-actions {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
+      margin: 30px 0 18px;
     }
 
-    .button {
-      padding: 16px 25px;
-      border-radius: 6px;
-      font-weight: 800;
-      font-size: 14px;
-      border: 1px solid rgba(255,255,255,.15);
-      transition: .25s;
-      display: inline-block;
+    .hero-note {
+      font-size: 12px !important;
+      color: #7a8798 !important;
     }
 
-    .button-primary {
-      background: #168cff;
-      border-color: #168cff;
+    /* HERO VISUAL */
+
+    .hero-visual {
+      min-height: 500px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      background:
+        linear-gradient(145deg, #071525, #0b56bd 65%, #62aaff);
+      box-shadow: var(--shadow);
     }
 
-    .button-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 35px rgba(22,140,255,.35);
+    .hero-glow {
+      position: absolute;
+      width: 430px;
+      height: 430px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.22);
+      right: -140px;
+      top: -100px;
     }
 
-    .button-secondary:hover {
-      border-color: #168cff;
-      color: #168cff;
+    .hero-glow-two {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.13);
+      left: -150px;
+      bottom: -130px;
     }
 
-    /* SECTIONS */
+    .car-shape {
+      position: absolute;
+      left: 9%;
+      right: 9%;
+      bottom: 26%;
+      height: 105px;
+      border-radius: 100px 130px 32px 32px;
+      background: linear-gradient(#f4f8fd, #91a5bb);
+      transform: skewX(-8deg);
+      box-shadow: 0 40px 50px rgba(0,0,0,0.32);
+    }
+
+    .car-roof {
+      position: absolute;
+      width: 48%;
+      height: 72px;
+      left: 26%;
+      top: -46px;
+      border-radius: 90px 100px 0 0;
+      background: linear-gradient(145deg, #18334f, #a8c0d8);
+      transform: skewX(8deg);
+    }
+
+    .wheel {
+      position: absolute;
+      bottom: -32px;
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: #101721;
+      border: 11px solid #2a3b4e;
+    }
+
+    .wheel-left {
+      left: 16%;
+    }
+
+    .wheel-right {
+      right: 16%;
+    }
+
+    /* GENERAL SECTIONS */
 
     section {
-      padding: 120px 8%;
+      padding: 105px 0;
     }
 
-    .section-title {
-      font-size: clamp(40px, 6vw, 70px);
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(40px, 5vw, 62px);
       line-height: 1;
-      margin-bottom: 18px;
-      letter-spacing: -3px;
+      letter-spacing: -2.5px;
+      margin: 10px 0 16px;
     }
 
-    .section-title span {
-      color: #168cff;
+    .section-heading h2 span {
+      color: var(--blue);
     }
 
-    .section-description {
-      max-width: 600px;
-      color: #8997a8;
-      margin-bottom: 55px;
-    }
-
-    /* SERVICES */
-
-    .services {
-      background: #07101c;
-    }
-
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service-card {
-      background: #0b1725;
-      border: 1px solid rgba(255,255,255,.07);
-      padding: 35px;
-      min-height: 320px;
-      transition: .25s;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(22,140,255,.5);
-      box-shadow: 0 20px 50px rgba(0,0,0,.25);
-    }
-
-    .service-number {
-      color: #168cff;
-      font-weight: 900;
-      font-size: 13px;
-      letter-spacing: 2px;
-    }
-
-    .service-card h3 {
-      font-size: 27px;
-      margin: 80px 0 12px;
-    }
-
-    .service-card p {
-      color: #8795a5;
-      font-size: 14px;
-    }
-
-    /* ABOUT */
-
-    .about {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-      background: #050b14;
-    }
-
-    .about-visual {
-      min-height: 500px;
-      background:
-        radial-gradient(circle, rgba(22,140,255,.25), transparent 35%),
-        linear-gradient(145deg, #102b48, #07101c);
-      border: 1px solid rgba(22,140,255,.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .big-three {
-      font-size: 400px;
-      font-weight: 900;
-      color: rgba(22,140,255,.08);
-      line-height: 1;
-    }
-
-    .about-text p {
-      color: #94a2b1;
-      margin: 25px 0;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 35px;
-    }
-
-    .stat {
-      border-top: 1px solid #26384a;
-      padding-top: 18px;
-    }
-
-    .stat strong {
-      display: block;
-      color: #168cff;
-      font-size: 24px;
-    }
-
-    .stat span {
-      color: #748293;
-      font-size: 12px;
+    .section-heading p {
+      color: var(--muted);
     }
 
     /* PRICING */
 
-    .pricing {
-      background: #07101c;
-    }
-
-    .price-grid {
+    .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
     }
 
-    .price-card {
-      background: #0b1725;
-      border: 1px solid rgba(255,255,255,.08);
-      padding: 35px;
+    .pricing-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      background: white;
+      box-shadow: 0 10px 35px rgba(7, 21, 37, 0.045);
     }
 
-    .price-card.featured {
-      border: 1px solid #168cff;
-      box-shadow: 0 0 40px rgba(22,140,255,.10);
+    .pricing-card.featured {
+      border: 2px solid var(--blue);
+      box-shadow: 0 20px 55px rgba(18,110,232,0.13);
     }
 
-    .price-card h3 {
-      font-size: 25px;
-      margin: 15px 0;
-    }
-
-    .price {
-      font-size: 55px;
+    .card-label {
+      color: var(--blue);
+      font-size: 11px;
       font-weight: 900;
-      color: #168cff;
+      letter-spacing: 1.8px;
     }
 
-    .price small {
-      font-size: 16px;
-      color: #718092;
+    .pricing-card h3 {
+      font-size: 25px;
+      margin: 10px 0 4px;
     }
 
-    .price-card ul {
+    .service-time {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .price-list {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin: 20px 0;
+      padding: 14px 0;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px 0;
+      font-weight: 800;
+    }
+
+    .price-row span {
+      color: var(--blue);
+    }
+
+    .pricing-card ul {
       list-style: none;
-      margin: 25px 0;
+      margin: 18px 0;
     }
 
-    .price-card li {
-      padding: 8px 0;
-      color: #9ba7b5;
+    .pricing-card li {
+      font-size: 14px;
+      color: #475467;
+      margin: 7px 0;
+    }
+
+    .pricing-card li::before {
+      content: "✓";
+      color: var(--blue);
+      font-weight: 900;
+      margin-right: 9px;
+    }
+
+    .small-note {
+      color: #7b8797;
+      font-size: 11px;
+      margin-bottom: 18px;
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+    }
+
+    /* FEES */
+
+    .fees {
+      margin-top: 25px;
+      padding: 25px;
+      border-radius: 17px;
+      background: var(--blue-light);
+      border: 1px solid #cfe2fb;
+    }
+
+    .fees h3 {
+      margin-bottom: 15px;
+    }
+
+    .fees-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .fee {
+      background: white;
+      padding: 17px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+    }
+
+    .fee strong {
+      display: block;
+    }
+
+    .fee-price {
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    /* WHY */
+
+    .why {
+      background: var(--background);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 24px;
+    }
+
+    .feature h3 {
+      margin-bottom: 7px;
+    }
+
+    .feature p {
+      color: var(--muted);
       font-size: 14px;
     }
 
-    .price-card li::before {
-      content: "✓";
-      color: #168cff;
-      font-weight: bold;
-      margin-right: 10px;
+    /* HOW IT WORKS */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+    }
+
+    .step-number {
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .step h3 {
+      margin: 14px 0 7px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* QUOTE */
+
+    .quote-section {
+      background: var(--navy);
+      color: white;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 0.75fr 1.25fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .quote-section h2 {
+      font-size: clamp(40px, 5vw, 65px);
+      line-height: 1;
+      letter-spacing: -2.5px;
+      margin: 15px 0 20px;
+    }
+
+    .quote-description {
+      color: #9eafc4;
+    }
+
+    .form-card {
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 13px;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #344054;
+      margin-bottom: 6px;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      outline: none;
+      background: white;
+    }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      border-color: var(--blue);
+    }
+
+    .form-field textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .full-width {
+      grid-column: 1 / -1;
+    }
+
+    /* CALCULATOR */
+
+    .estimate {
+      margin: 16px 0;
+      padding: 18px;
+      border-radius: 13px;
+      background: var(--blue-light);
+    }
+
+    .estimate-row {
+      display: flex;
+      justify-content: space-between;
+      color: #526274;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    .estimate-total {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #cfe2fb;
+      padding-top: 11px;
+      margin-top: 10px;
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 25px;
+    }
+
+    .disclaimer {
+      color: #7b8797;
+      font-size: 11px;
+      margin-bottom: 15px;
+    }
+
+    /* FAQ */
+
+    .faq {
+      max-width: 850px;
+    }
+
+    .faq details {
+      border-bottom: 1px solid var(--border);
+      padding: 19px 0;
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 800;
+      list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq summary::after {
+      content: "+";
+      float: right;
+      color: var(--blue);
+      font-size: 20px;
+    }
+
+    .faq details[open] summary::after {
+      content: "−";
+    }
+
+    .faq p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 12px;
     }
 
     /* CTA */
 
-    .cta {
+    .final-cta {
       text-align: center;
-      background:
-        radial-gradient(circle at center, rgba(22,140,255,.22), transparent 55%),
-        #07101c;
+      padding: 90px 0;
+      background: linear-gradient(135deg, #eaf3ff, #ffffff);
     }
 
-    .cta h2 {
-      font-size: clamp(45px, 7vw, 90px);
-      line-height: .95;
-      margin-bottom: 30px;
+    .final-cta h2 {
+      font-size: clamp(45px, 6vw, 72px);
+      line-height: 1;
+      letter-spacing: -3px;
+      margin: 12px 0 28px;
     }
 
-    .cta h2 span {
-      color: #168cff;
-    }
-
-    /* CONTACT */
-
-    .contact {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 80px;
-      background: #050b14;
-    }
-
-    .contact-info p {
-      color: #8997a8;
-      margin-top: 20px;
-    }
-
-    form {
-      display: grid;
-      gap: 13px;
-    }
-
-    input,
-    select,
-    textarea {
-      width: 100%;
-      background: #0b1725;
-      border: 1px solid #26384a;
-      color: white;
-      padding: 17px;
-      border-radius: 5px;
-      font-family: inherit;
-      outline: none;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      border-color: #168cff;
-    }
-
-    textarea {
-      min-height: 150px;
-      resize: vertical;
-    }
-
-    form button {
-      border: none;
-      cursor: pointer;
-      font-family: inherit;
+    .final-cta h2 span {
+      color: var(--blue);
     }
 
     /* FOOTER */
 
     footer {
-      padding: 35px 8%;
-      background: #03070c;
-      border-top: 1px solid rgba(255,255,255,.06);
-      display: flex;
-      justify-content: space-between;
-      color: #647181;
+      background: #06101e;
+      color: #aab8c8;
+      padding: 55px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 35px;
+    }
+
+    footer h4 {
+      color: white;
+      margin-bottom: 12px;
+    }
+
+    footer a {
+      display: block;
+      margin: 8px 0;
       font-size: 13px;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid #203147;
+      margin-top: 35px;
+      padding-top: 22px;
+      font-size: 12px;
     }
 
     /* MOBILE */
 
-    @media(max-width: 850px) {
-
+    @media (max-width: 900px) {
       .nav-links {
         display: none;
+        position: absolute;
+        top: 76px;
+        right: 4%;
+        background: white;
+        padding: 18px;
+        border: 1px solid var(--border);
+        border-radius: 13px;
+        box-shadow: var(--shadow);
+        flex-direction: column;
+        align-items: stretch;
+        min-width: 190px;
       }
 
-      .hero {
-        padding-left: 7%;
-        padding-right: 7%;
+      .nav-links.active {
+        display: flex;
       }
 
-      .hero h1 {
-        letter-spacing: -3px;
-      }
-
-      section {
-        padding: 85px 7%;
-      }
-
-      .service-grid,
-      .price-grid,
-      .about,
-      .contact {
-        grid-template-columns: 1fr;
-      }
-
-      .about {
-        gap: 45px;
-      }
-
-      .about-visual {
-        min-height: 350px;
-      }
-
-      .big-three {
-        font-size: 300px;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      footer {
+      .menu-button {
         display: block;
       }
 
-      footer p {
-        margin-top: 15px;
+      .hero-grid,
+      .why-grid,
+      .quote-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 70px 0;
+      }
+
+      .hero-visual {
+        min-height: 380px;
+      }
+
+      .feature-grid,
+      .fees-grid,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .full-width {
+        grid-column: auto;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .hero h1 {
+        font-size: 54px;
+        letter-spacing: -3px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-actions .btn {
+        width: 100%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-card {
+        padding: 23px;
       }
     }
   </style>
@@ -486,377 +773,948 @@
 
 <body>
 
-  <nav>
-    <a href="#" class="logo">
-      <span>3</span>POINT DETAILING
-    </a>
+<header>
+  <div class="container nav">
+    <a href="#" class="logo"><span>3</span>Point Detailing</a>
 
-    <div class="nav-links">
+    <nav class="nav-links" id="navLinks">
       <a href="#services">Services</a>
-      <a href="#about">About</a>
       <a href="#pricing">Pricing</a>
-      <a href="#contact" class="nav-button">Book Now</a>
-    </div>
-  </nav>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="btn btn-primary">Get a Quote</a>
+    </nav>
 
+    <button class="menu-button" id="menuButton">☰</button>
+  </div>
+</header>
 
-  <!-- HERO -->
+<main>
 
-  <section class="hero">
+<section class="hero">
+  <div class="container hero-grid">
 
-    <div class="hero-content">
-
-      <div class="eyebrow">
-        MOBILE AUTO DETAILING
-      </div>
+    <div>
+      <div class="eyebrow">Professional Car Detailing</div>
 
       <h1>
-        YOUR CAR.<br>
-        <span>OUR STANDARD.</span>
+        You Relax.<br>
+        <span>We Detail.</span>
       </h1>
 
       <p>
-        Professional detailing that brings back the clean,
-        glossy, just-detailed feeling — right where you are.
+        Professional interior and exterior car detailing designed to make
+        your vehicle look and feel its best.
       </p>
 
-      <div class="buttons">
-
-        <a href="#contact" class="button button-primary">
-          BOOK A DETAIL →
-        </a>
-
-        <a href="#services" class="button button-secondary">
-          VIEW SERVICES
-        </a>
-
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get a Quote →</a>
+        <a href="#services" class="btn btn-secondary">View Services</a>
       </div>
 
+      <p class="hero-note">
+        Professional detailing • Quality care • Attention to detail
+      </p>
     </div>
 
-  </section>
+    <div class="hero-visual">
+      <div class="hero-glow"></div>
+      <div class="hero-glow-two"></div>
 
-
-  <!-- SERVICES -->
-
-  <section class="services" id="services">
-
-    <div class="eyebrow">
-      WHAT WE DO
+      <div class="car-shape">
+        <div class="car-roof"></div>
+        <div class="wheel wheel-left"></div>
+        <div class="wheel wheel-right"></div>
+      </div>
     </div>
 
-    <h2 class="section-title">
-      BUILT TO <span>IMPRESS.</span>
-    </h2>
+  </div>
+</section>
 
-    <p class="section-description">
-      From a quick refresh to a complete interior and exterior
-      reset, we focus on the details that make your vehicle stand out.
-    </p>
 
-    <div class="service-grid">
+<section id="pricing">
+  <div class="container">
 
-      <div class="service-card">
-        <div class="service-number">01</div>
+    <div class="section-heading">
+      <div class="eyebrow">Services & Pricing</div>
+
+      <h2>
+        Choose Your <span>Detail.</span>
+      </h2>
+
+      <p>
+        Professional detailing packages designed to keep your vehicle
+        looking its best.
+      </p>
+    </div>
+
+
+    <div class="pricing-grid" id="services">
+
+      <!-- EXTERIOR -->
+
+      <article class="pricing-card">
+
+        <div class="card-label">EXTERIOR</div>
+
+        <h3>Premium Exterior Wash</h3>
+
+        <div class="service-time">◷ 1–2 Hours</div>
+
+        <div class="price-list">
+          <div class="price-row">
+            Sedans <span>$65</span>
+          </div>
+
+          <div class="price-row">
+            SUVs <span>$75</span>
+          </div>
+
+          <div class="price-row">
+            Large SUVs & Trucks <span>$90</span>
+          </div>
+        </div>
+
+        <ul>
+          <li>Full Exterior Foam Bath</li>
+          <li>Wheels & Tires Deep Cleaned</li>
+          <li>Tire Shine Applied</li>
+          <li>Ceramic Paint Sealant</li>
+          <li>Up to 6 Months of Paint Protection</li>
+        </ul>
+
+        <p class="small-note">
+          The up-to-6-month protection refers specifically to the vehicle's
+          paint and may vary depending on conditions and maintenance.
+        </p>
+
+        <a href="#contact" class="btn btn-primary">
+          Get a Quote
+        </a>
+
+      </article>
+
+
+      <!-- INTERIOR -->
+
+      <article class="pricing-card">
+
+        <div class="card-label">INTERIOR</div>
 
         <h3>Interior Detail</h3>
 
-        <p>
-          Deep vacuuming, surface cleaning, mats, windows,
-          and the little details that make your cabin feel fresh again.
-        </p>
-      </div>
+        <div class="service-time">◷ 1–2 Hours</div>
+
+        <div class="price-list">
+
+          <div class="price-row">
+            Sedans <span>$95</span>
+          </div>
+
+          <div class="price-row">
+            SUVs <span>$105</span>
+          </div>
+
+          <div class="price-row">
+            Large SUVs & Trucks <span>$115</span>
+          </div>
+
+        </div>
+
+        <ul>
+          <li>Complete Interior Vacuum</li>
+          <li>Detailed Cleaning of Cracks & Crevices</li>
+          <li>Interior Wipe-Down</li>
+          <li>UV Protection Applied to Interior Surfaces</li>
+          <li>Leather & Fabric Cleaned</li>
+          <li>Streak-Free Glass</li>
+        </ul>
+
+        <a href="#contact" class="btn btn-primary">
+          Get a Quote
+        </a>
+
+      </article>
 
 
-      <div class="service-card">
-        <div class="service-number">02</div>
+      <!-- FULL DETAIL -->
 
-        <h3>Exterior Detail</h3>
+      <article class="pricing-card featured">
 
-        <p>
-          Hand washing, wheels, tires, drying and finishing
-          touches designed to bring your vehicle's shine back.
-        </p>
-      </div>
-
-
-      <div class="service-card">
-        <div class="service-number">03</div>
+        <div class="card-label">COMPLETE CARE</div>
 
         <h3>Full Detail</h3>
 
-        <p>
-          The complete inside-and-out treatment for when
-          you want your vehicle looking its absolute best.
-        </p>
+        <div class="service-time">◷ 2–3 Hours</div>
+
+        <div class="price-list">
+
+          <div class="price-row">
+            Sedans <span>$150</span>
+          </div>
+
+          <div class="price-row">
+            SUVs <span>$160</span>
+          </div>
+
+          <div class="price-row">
+            Large SUVs & Trucks <span>$185</span>
+          </div>
+
+        </div>
+
+        <p><strong>Exterior</strong></p>
+
+        <ul>
+          <li>Full Exterior Foam Bath</li>
+          <li>Wheels & Tires Deep Cleaned</li>
+          <li>Tire Shine Applied</li>
+          <li>Ceramic Paint Sealant</li>
+          <li>Up to 6 Months of Paint Protection</li>
+        </ul>
+
+        <p><strong>Interior</strong></p>
+
+        <ul>
+          <li>Complete Interior Vacuum</li>
+          <li>Detailed Cleaning of Cracks & Crevices</li>
+          <li>Interior Wipe-Down</li>
+          <li>UV Protection Applied to Interior Surfaces</li>
+          <li>Leather & Fabric Cleaned</li>
+          <li>Streak-Free Glass</li>
+        </ul>
+
+        <a href="#contact" class="btn btn-primary">
+          Get a Quote
+        </a>
+
+      </article>
+
+    </div>
+
+
+    <!-- FEES -->
+
+    <div class="fees">
+
+      <h3>Additional Fees</h3>
+
+      <div class="fees-grid">
+
+        <div class="fee">
+          <strong>Mobile Service Fee</strong>
+          <div class="fee-price">+$10</div>
+          <small>
+            Applies when 3Point Detailing travels to the customer's location.
+          </small>
+        </div>
+
+        <div class="fee">
+          <strong>Pet Hair Removal</strong>
+          <div class="fee-price">+$25</div>
+          <small>
+            Applies when significant pet hair removal is required.
+          </small>
+        </div>
+
       </div>
 
     </div>
 
-  </section>
+  </div>
+</section>
 
 
-  <!-- ABOUT -->
+<!-- WHY CHOOSE -->
 
-  <section class="about" id="about">
+<section class="why">
 
-    <div class="about-visual">
-      <div class="big-three">3</div>
-    </div>
+  <div class="container why-grid">
 
-    <div class="about-text">
+    <div>
 
       <div class="eyebrow">
-        WHY 3POINT
+        Why 3Point Detailing?
       </div>
 
-      <h2 class="section-title">
-        SMALL BUSINESS.<br>
-        <span>BIG STANDARDS.</span>
+      <div class="section-heading" style="margin-bottom:15px">
+
+        <h2>
+          Straightforward care.<br>
+          <span>Clear pricing.</span>
+        </h2>
+
+        <p>
+          Everything is designed to make choosing and booking your
+          detail simple.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <h3>Attention to Detail</h3>
+        <p>
+          Every part of your vehicle gets careful attention.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>Interior & Exterior Care</h3>
+        <p>
+          Choose focused interior or exterior service — or take care
+          of both with a Full Detail.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>Quality Products</h3>
+        <p>
+          Professional detailing products are used throughout
+          the cleaning process.
+        </p>
+      </div>
+
+      <div class="feature">
+        <h3>Straightforward Pricing</h3>
+        <p>
+          Clear package pricing based on vehicle size, with additional
+          fees shown upfront.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- HOW IT WORKS -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">The Process</div>
+
+      <h2>
+        How It <span>Works.</span>
       </h2>
 
-      <p>
-        3Point Detailing was built around a simple idea:
-        your car deserves more than a rushed wash.
+    </div>
+
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-number">01</div>
+
+        <h3>Request a Quote</h3>
+
+        <p>
+          Tell us about your vehicle and the service you're interested in.
+        </p>
+      </div>
+
+
+      <div class="step">
+        <div class="step-number">02</div>
+
+        <h3>Choose Your Service</h3>
+
+        <p>
+          Select the detailing package that fits your vehicle and needs.
+        </p>
+      </div>
+
+
+      <div class="step">
+        <div class="step-number">03</div>
+
+        <h3>You Relax. We Detail.</h3>
+
+        <p>
+          Let us handle the detailing while you get your time back.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QUOTE FORM -->
+
+<section class="quote-section" id="contact">
+
+  <div class="container quote-grid">
+
+    <div>
+
+      <div class="eyebrow">
+        Get Started
+      </div>
+
+      <h2>
+        Ready to Get Your Car Looking Its Best?
+      </h2>
+
+      <p class="quote-description">
+        Tell us what you need and we'll help you find the right
+        detail for your vehicle.
       </p>
 
+    </div>
+
+
+    <div class="form-card">
+
+      <form id="quoteForm">
+
+        <div class="form-grid">
+
+          <div class="form-field">
+            <label>Name</label>
+            <input type="text" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>Email</label>
+            <input type="email" required>
+          </div>
+
+
+          <div class="form-field">
+            <label>Vehicle Type</label>
+            <input type="text" placeholder="Example: Honda Civic">
+          </div>
+
+
+          <div class="form-field">
+
+            <label>Vehicle Size</label>
+
+            <select id="vehicleSize">
+
+              <option value="sedan">
+                Sedan
+              </option>
+
+              <option value="suv">
+                SUV
+              </option>
+
+              <option value="large">
+                Large SUV / Truck
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>Service Interested In</label>
+
+            <select id="service">
+
+              <option value="exterior">
+                Premium Exterior Wash
+              </option>
+
+              <option value="interior">
+                Interior Detail
+              </option>
+
+              <option value="full">
+                Full Detail
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Significant pet hair?
+            </label>
+
+            <select id="petHair">
+
+              <option value="0">
+                No
+              </option>
+
+              <option value="25">
+                Yes (+$25)
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Mobile service?
+            </label>
+
+            <select id="mobileService">
+
+              <option value="10">
+                Yes (+$10)
+              </option>
+
+              <option value="0">
+                No
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Preferred Date
+            </label>
+
+            <input type="date">
+
+          </div>
+
+
+          <div class="form-field">
+
+            <label>
+              Preferred Time
+            </label>
+
+            <input type="time">
+
+          </div>
+
+
+          <div class="form-field full-width">
+
+            <label>
+              Optional Message
+            </label>
+
+            <textarea
+              placeholder="Anything else we should know?"
+            ></textarea>
+
+          </div>
+
+        </div>
+
+
+        <!-- CALCULATOR -->
+
+        <div class="estimate">
+
+          <div class="estimate-row">
+            <span>Base package</span>
+            <strong id="basePrice">$65</strong>
+          </div>
+
+          <div class="estimate-row">
+            <span>Mobile service</span>
+            <strong id="mobilePrice">+$10</strong>
+          </div>
+
+          <div class="estimate-row">
+            <span>Pet hair removal</span>
+            <strong id="petPrice">+$0</strong>
+          </div>
+
+          <div class="estimate-total">
+            <span>Estimated Total</span>
+            <span id="totalPrice">$75</span>
+          </div>
+
+        </div>
+
+
+        <p class="disclaimer">
+          Final pricing may vary depending on vehicle condition.
+          Your quote will be confirmed before service.
+        </p>
+
+
+        <button
+          type="button"
+          class="btn btn-primary"
+          style="width:100%"
+          onclick="showQuoteMessage()"
+        >
+          Request a Quote →
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section id="faq">
+
+  <div class="container faq">
+
+    <div class="section-heading">
+
+      <div class="eyebrow">
+        Questions
+      </div>
+
+      <h2>
+        Frequently Asked <span>Questions.</span>
+      </h2>
+
+    </div>
+
+
+    <details>
+      <summary>
+        How long does a detail take?
+      </summary>
+
       <p>
-        We focus on the little things, show up ready to work,
-        and treat every vehicle with the attention it deserves.
+        Service time depends on the package and vehicle.
+        The Premium Exterior Wash and Interior Detail are estimated
+        at 1–2 hours, while the Full Detail is estimated at 2–3 hours.
+        Actual time may vary depending on vehicle size and condition.
       </p>
-
-      <div class="stats">
-
-        <div class="stat">
-          <strong>01</strong>
-          <span>QUALITY FIRST</span>
-        </div>
-
-        <div class="stat">
-          <strong>02</strong>
-          <span>MOBILE SERVICE</span>
-        </div>
-
-        <div class="stat">
-          <strong>03</strong>
-          <span>DETAILS MATTER</span>
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+    </details>
 
 
-  <!-- PRICING -->
+    <details>
+      <summary>
+        What vehicles do you detail?
+      </summary>
 
-  <section class="pricing" id="pricing">
-
-    <div class="eyebrow">
-      SIMPLE PRICING
-    </div>
-
-    <h2 class="section-title">
-      CHOOSE YOUR <span>DETAIL.</span>
-    </h2>
-
-    <p class="section-description">
-      Starting prices are shown below. Final quotes can vary
-      depending on vehicle size and condition.
-    </p>
-
-    <div class="price-grid">
-
-      <div class="price-card">
-
-        <div class="eyebrow">REFRESH</div>
-
-        <h3>Interior</h3>
-
-        <div class="price">
-          $60<small>+</small>
-        </div>
-
-        <ul>
-          <li>Vacuum & debris removal</li>
-          <li>Surface cleaning</li>
-          <li>Windows & mirrors</li>
-          <li>Mats cleaned</li>
-        </ul>
-
-        <a href="#contact" class="button button-secondary">
-          REQUEST QUOTE
-        </a>
-
-      </div>
+      <p>
+        We offer pricing for sedans, SUVs, and large SUVs and trucks.
+      </p>
+    </details>
 
 
-      <div class="price-card featured">
+    <details>
+      <summary>
+        How do I get a quote?
+      </summary>
 
-        <div class="eyebrow">MOST POPULAR</div>
-
-        <h3>Full Detail</h3>
-
-        <div class="price">
-          $120<small>+</small>
-        </div>
-
-        <ul>
-          <li>Complete interior detail</li>
-          <li>Hand wash exterior</li>
-          <li>Wheels & tires</li>
-          <li>Finishing touches</li>
-        </ul>
-
-        <a href="#contact" class="button button-primary">
-          BOOK FULL DETAIL
-        </a>
-
-      </div>
+      <p>
+        Use the quote request form on the website or contact
+        3Point Detailing directly.
+      </p>
+    </details>
 
 
-      <div class="price-card">
+    <details>
+      <summary>
+        What is included in the Full Detail?
+      </summary>
 
-        <div class="eyebrow">SHINE</div>
-
-        <h3>Exterior</h3>
-
-        <div class="price">
-          $70<small>+</small>
-        </div>
-
-        <ul>
-          <li>Hand wash</li>
-          <li>Wheel & tire cleaning</li>
-          <li>Drying & finish</li>
-          <li>Exterior glass</li>
-        </ul>
-
-        <a href="#contact" class="button button-secondary">
-          REQUEST QUOTE
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
+      <p>
+        The Full Detail combines all of the listed interior and exterior
+        services, including the foam bath, wheel and tire cleaning,
+        tire shine, ceramic paint sealant, interior vacuuming,
+        crevice cleaning, interior wipe-down, UV protection,
+        leather/fabric cleaning, and streak-free glass.
+      </p>
+    </details>
 
 
-  <!-- CALL TO ACTION -->
+    <details>
+      <summary>
+        How long does the ceramic paint protection last?
+      </summary>
 
-  <section class="cta">
+      <p>
+        The ceramic paint sealant provides up to 6 months of protection
+        to the vehicle's paint. Actual durability can vary depending
+        on conditions and maintenance.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Is there a mobile service fee?
+      </summary>
+
+      <p>
+        Yes. A $10 mobile service fee applies when 3Point Detailing
+        travels to the customer's location.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Is there an additional charge for pet hair?
+      </summary>
+
+      <p>
+        Yes. Significant pet hair removal has an additional $25 fee
+        because it requires additional cleaning time and work.
+      </p>
+    </details>
+
+
+    <details>
+      <summary>
+        Can I get just an interior or exterior detail?
+      </summary>
+
+      <p>
+        Yes. Customers can choose the Interior Detail,
+        Premium Exterior Wash, or Full Detail depending on
+        what their vehicle needs.
+      </p>
+    </details>
+
+  </div>
+
+</section>
+
+
+<!-- FINAL CTA -->
+
+<section class="final-cta">
+
+  <div class="container">
 
     <div class="eyebrow">
-      READY WHEN YOU ARE
+      3POINT DETAILING
     </div>
 
     <h2>
-      MAKE YOUR CAR<br>
-      <span>FEEL NEW AGAIN.</span>
+      You Relax.<br>
+      <span>We Detail.</span>
     </h2>
 
-    <a href="#contact" class="button button-primary">
-      BOOK YOUR DETAIL →
+    <a href="#contact" class="btn btn-primary">
+      Get a Quote →
     </a>
 
-  </section>
+  </div>
+
+</section>
+
+</main>
 
 
-  <!-- CONTACT -->
+<!-- FOOTER -->
 
-  <section class="contact" id="contact">
+<footer>
 
-    <div class="contact-info">
+  <div class="container">
 
-      <div class="eyebrow">
-        LET'S TALK
+    <div class="footer-grid">
+
+      <div>
+
+        <div class="logo" style="color:white;">
+          <span>3</span>Point Detailing
+        </div>
+
+        <p style="margin-top:10px;">
+          Professional interior and exterior car detailing.
+        </p>
+
       </div>
 
-      <h2 class="section-title">
-        GET YOUR<br>
-        <span>QUOTE.</span>
-      </h2>
 
-      <p>
-        Tell us what you drive and what you need.
-        We'll get back to you with a quote and available times.
-      </p>
+      <div>
+
+        <h4>Explore</h4>
+
+        <a href="#services">Services</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+
+      </div>
+
+
+      <div>
+
+        <h4>Get Started</h4>
+
+        <a href="#contact">Get a Quote</a>
+        <a href="#contact">Contact</a>
+
+      </div>
 
     </div>
 
 
-    <form>
-
-      <input
-        type="text"
-        placeholder="Your name"
-        required
-      >
-
-      <input
-        type="tel"
-        placeholder="Phone number"
-        required
-      >
-
-      <input
-        type="text"
-        placeholder="Vehicle (ex. 2022 Honda Civic)"
-        required
-      >
-
-      <select required>
-
-        <option value="">
-          Select a service
-        </option>
-
-        <option>
-          Interior Detail
-        </option>
-
-        <option>
-          Exterior Detail
-        </option>
-
-        <option>
-          Full Detail
-        </option>
-
-      </select>
-
-      <textarea
-        placeholder="Tell us anything else we should know..."
-      ></textarea>
-
-      <button
-        type="button"
-        class="button button-primary"
-        onclick="alert('Thanks! We will be in touch soon.')"
-      >
-        REQUEST MY QUOTE →
-      </button>
-
-    </form>
-
-  </section>
-
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="logo">
-      <span>3</span>POINT DETAILING
-    </div>
-
-    <p>
+    <div class="copyright">
       © 2026 3Point Detailing. All rights reserved.
-    </p>
+    </div>
 
-  </footer>
+  </div>
+
+</footer>
+
+
+<script>
+
+  /* MOBILE MENU */
+
+  const menuButton =
+    document.getElementById("menuButton");
+
+  const navLinks =
+    document.getElementById("navLinks");
+
+  menuButton.addEventListener("click", function () {
+    navLinks.classList.toggle("active");
+  });
+
+
+  /* PRICING CALCULATOR */
+
+  const prices = {
+
+    exterior: {
+      sedan: 65,
+      suv: 75,
+      large: 90
+    },
+
+    interior: {
+      sedan: 95,
+      suv: 105,
+      large: 115
+    },
+
+    full: {
+      sedan: 150,
+      suv: 160,
+      large: 185
+    }
+
+  };
+
+
+  const vehicleSize =
+    document.getElementById("vehicleSize");
+
+  const service =
+    document.getElementById("service");
+
+  const petHair =
+    document.getElementById("petHair");
+
+  const mobileService =
+    document.getElementById("mobileService");
+
+  const basePrice =
+    document.getElementById("basePrice");
+
+  const mobilePrice =
+    document.getElementById("mobilePrice");
+
+  const petPrice =
+    document.getElementById("petPrice");
+
+  const totalPrice =
+    document.getElementById("totalPrice");
+
+
+  function updatePrice() {
+
+    const base =
+      prices[service.value][vehicleSize.value];
+
+    const mobile =
+      Number(mobileService.value);
+
+    const pet =
+      Number(petHair.value);
+
+    const total =
+      base + mobile + pet;
+
+    basePrice.textContent =
+      "$" + base;
+
+    mobilePrice.textContent =
+      "+$" + mobile;
+
+    petPrice.textContent =
+      "+$" + pet;
+
+    totalPrice.textContent =
+      "$" + total;
+
+  }
+
+
+  vehicleSize.addEventListener(
+    "change",
+    updatePrice
+  );
+
+  service.addEventListener(
+    "change",
+    updatePrice
+  );
+
+  petHair.addEventListener(
+    "change",
+    updatePrice
+  );
+
+  mobileService.addEventListener(
+    "change",
+    updatePrice
+  );
+
+
+  updatePrice();
+
+
+  /* TEMPORARY QUOTE MESSAGE */
+
+  function showQuoteMessage() {
+
+    alert(
+      "Thanks! Your quote request form is ready. We still need to connect the form to your email before launching the site."
+    );
+
+  }
+
+</script>
 
 </body>
 </html>
