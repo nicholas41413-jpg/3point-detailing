@@ -1108,3 +1108,38 @@ footer {
     object-position: center;
   }
 }
+.deal {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 18px auto 0;
+  padding: 11px 18px;
+  border: 1px solid #cfe0ff;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 24px rgba(11, 99, 246, 0.08);
+  text-align: center;
+}
+
+.deal-label {
+  margin: 0 0 2px;
+  color: #5e6a7d;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.deal strong {
+  display: block;
+  color: #0b1220;
+  font-size: 13px;
+  font-weight: 850;
+}
+
+.deal span {
+  display: block;
+  margin-top: 1px;
+  color: #5e6a7d;
+  font-size: 11px;
