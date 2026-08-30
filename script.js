@@ -16,6 +16,8 @@ const prices = {
   }
 };
 
+const DISCOUNT = 20;
+
 const service = document.getElementById("service");
 const size = document.getElementById("vehicle-size");
 const pet = document.getElementById("pet-hair");
@@ -36,17 +38,40 @@ function updateEstimate() {
   const petFee = pet.value.startsWith("Yes") ? 25 : 0;
   const mobileFee = mobile.value.startsWith("Yes") ? 10 : 0;
 
-  const final = base + petFee + mobileFee;
+  // $20 promotional discount applies to the service price.
+  const discount = Math.min(DISCOUNT, base);
+
+  // Fees are added after the $20 discount.
+  const final = base - discount + petFee + mobileFee;
 
   baseTotal.textContent = `$${base}`;
-  petTotal.textContent = petFee ? `+$${petFee}` : "$0";
-  mobileTotal.textContent = mobileFee ? `+$${mobileFee}` : "$0";
+
+  petTotal.textContent = petFee
+    ? `+$${petFee}`
+    : "$0";
+
+  mobileTotal.textContent = mobileFee
+    ? `+$${mobileFee}`
+    : "$0";
 
   total.textContent = `$${final}`;
   sideTotal.textContent = `$${final}`;
 
   hiddenTotal.value = `$${final}`;
   hiddenBase.value = `$${base}`;
+
+  // Add discount information to the form submission.
+  let discountInput = document.getElementById("hidden-discount");
+
+  if (!discountInput) {
+    discountInput = document.createElement("input");
+    discountInput.type = "hidden";
+    discountInput.name = "Promotion Discount";
+    discountInput.id = "hidden-discount";
+    document.getElementById("quote-form").appendChild(discountInput);
+  }
+
+  discountInput.value = `-$${discount}`;
 }
 
 [service, size, pet, mobile].forEach(element => {
@@ -65,36 +90,50 @@ const navLinks = document.querySelector(".nav-links");
 
 menuToggle.addEventListener("click", () => {
   const open = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+
+  menuToggle.setAttribute(
+    "aria-expanded",
+    open ? "true" : "false"
+  );
 });
 
 navLinks.querySelectorAll("a").forEach(link => {
   link.addEventListener("click", () => {
     navLinks.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
   });
 });
 
-document.getElementById("year").textContent = new Date().getFullYear();
+document.getElementById("year").textContent =
+  new Date().getFullYear();
 
 const params = new URLSearchParams(window.location.search);
 
 if (params.get("quote") === "sent") {
   const toast = document.getElementById("toast");
 
-  toast.textContent = "Thanks! Your quote request was sent.";
+  toast.textContent =
+    "Thanks! Your quote request was sent.";
+
   toast.classList.add("show");
 
   setTimeout(() => {
     toast.classList.remove("show");
   }, 5000);
 
-  history.replaceState({}, "", window.location.pathname + "#quote");
+  history.replaceState(
+    {},
+    "",
+    window.location.pathname + "#quote"
+  );
 }
 
 document.getElementById("quote-form").addEventListener("submit", () => {
   const toast = document.getElementById("toast");
 
-  toast.textContent = "Sending your quote request...";
+  toast.textContent =
+    "Sending your quote request...";
+
   toast.classList.add("show");
 
   setTimeout(() => {
