@@ -4,11 +4,13 @@ const prices = {
     "SUV": 75,
     "Large SUV / Truck": 90
   },
+
   "Interior Detail": {
     "Sedan": 95,
     "SUV": 105,
     "Large SUV / Truck": 115
   },
+
   "Full Detail": {
     "Sedan": 150,
     "SUV": 160,
@@ -57,7 +59,9 @@ function updateEstimate() {
 }
 
 [service, size, pet, mobile].forEach(element => {
-  element.addEventListener("change", updateEstimate);
+  if (element) {
+    element.addEventListener("change", updateEstimate);
+  }
 });
 
 document.querySelectorAll("[data-service]").forEach(button => {
@@ -70,43 +74,68 @@ document.querySelectorAll("[data-service]").forEach(button => {
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 
-menuToggle.addEventListener("click", () => {
-  const open = navLinks.classList.toggle("open");
-  menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
-});
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
 
-navLinks.querySelectorAll("a").forEach(link => {
-  link.addEventListener("click", () => {
-    navLinks.classList.remove("open");
+    menuToggle.setAttribute(
+      "aria-expanded",
+      open ? "true" : "false"
+    );
   });
-});
 
-document.getElementById("year").textContent = new Date().getFullYear();
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    });
+  });
+}
+
+const year = document.getElementById("year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
 
 const params = new URLSearchParams(window.location.search);
 
 if (params.get("quote") === "sent") {
   const toast = document.getElementById("toast");
 
-  toast.textContent = "Thanks! Your quote request was sent.";
-  toast.classList.add("show");
+  if (toast) {
+    toast.textContent = "Thanks! Your quote request was sent.";
+    toast.classList.add("show");
 
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 5000);
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 5000);
+  }
 
-  history.replaceState({}, "", window.location.pathname + "#quote");
+  history.replaceState(
+    {},
+    "",
+    window.location.pathname + "#quote"
+  );
 }
 
-document.getElementById("quote-form").addEventListener("submit", () => {
-  const toast = document.getElementById("toast");
+const quoteForm = document.getElementById("quote-form");
 
-  toast.textContent = "Sending your quote request...";
-  toast.classList.add("show");
+if (quoteForm) {
+  quoteForm.addEventListener("submit", () => {
+    const toast = document.getElementById("toast");
 
-  setTimeout(() => {
-    toast.classList.remove("show");
-  }, 3500);
-});
+    if (toast) {
+      toast.textContent = "Sending your quote request...";
+      toast.classList.add("show");
 
-updateEstimate();
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3500);
+    }
+  });
+}
+
+if (service && size && pet && mobile) {
+  updateEstimate();
+}
