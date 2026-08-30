@@ -38,6 +38,8 @@ textarea {
   font: inherit;
 }
 
+/* CONTAINER */
+
 .container {
   width: min(1160px, calc(100% - 40px));
   margin: auto;
@@ -49,7 +51,7 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(255, 255, 255, .92);
+  background: rgba(255, 255, 255, .94);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(229, 234, 241, .8);
 }
@@ -82,9 +84,8 @@ textarea {
   height: 35px;
   border-radius: 10px;
   background: var(--blue);
-  color: #fff;
+  color: white;
   font-weight: 900;
-  box-shadow: 0 8px 20px rgba(11, 99, 246, .25);
 }
 
 .nav-links {
@@ -107,8 +108,7 @@ textarea {
   padding: 11px 17px;
   border-radius: 12px;
   background: var(--blue);
-  color: #fff !important;
-  box-shadow: 0 9px 20px rgba(11, 99, 246, .18);
+  color: white !important;
 }
 
 .menu-toggle {
@@ -154,10 +154,7 @@ textarea {
 
 .hero-grid {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 60px;
-  align-items: center;
+  display: block;
 }
 
 .hero-copy {
@@ -200,6 +197,8 @@ textarea {
   justify-content: center;
 }
 
+/* BUTTONS */
+
 .btn {
   display: inline-flex;
   justify-content: center;
@@ -210,10 +209,7 @@ textarea {
   border: 1px solid transparent;
   font-weight: 800;
   cursor: pointer;
-  transition:
-    transform .18s ease,
-    box-shadow .18s ease,
-    background .18s ease;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
 }
 
 .btn:hover {
@@ -222,7 +218,7 @@ textarea {
 
 .btn-primary {
   background: var(--blue);
-  color: #fff;
+  color: white;
   box-shadow: 0 12px 24px rgba(11, 99, 246, .22);
 }
 
@@ -231,12 +227,12 @@ textarea {
 }
 
 .btn-ghost {
-  background: #fff;
+  background: white;
   border-color: var(--line);
 }
 
 .btn-outline {
-  background: #fff;
+  background: white;
   border-color: #cfd7e3;
   color: var(--ink);
   width: 100%;
@@ -257,20 +253,18 @@ textarea {
   padding: 10px 15px;
 }
 
-/* PROMO / DEAL */
+/* PROMOTION */
 
 .promo-banner {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 14px;
-  width: fit-content;
-  margin: 20px auto 0;
-  padding: 12px 18px;
+  margin: 24px auto 0;
+  padding: 12px 17px;
+  background: white;
   border: 1px solid #dce7f8;
-  border-radius: 14px;
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(10, 31, 68, .08);
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(10, 31, 68, .08);
   text-align: left;
 }
 
@@ -281,7 +275,7 @@ textarea {
   padding: 6px 9px;
   border-radius: 999px;
   background: var(--blue);
-  color: #ffffff;
+  color: white;
   font-size: 9px;
   font-weight: 900;
   letter-spacing: .08em;
@@ -321,7 +315,7 @@ textarea {
   box-shadow: 0 0 0 5px rgba(11, 99, 246, .09);
 }
 
-/* REMOVED HERO IMAGE */
+/* REMOVE OLD HERO IMAGE */
 
 .hero-photo-wrap {
   display: none !important;
@@ -362,6 +356,16 @@ textarea {
   font-size: 17px;
 }
 
+.deal-note {
+  margin-top: 14px !important;
+  font-size: 13px !important;
+  color: var(--blue) !important;
+}
+
+.deal-note strong {
+  font-weight: 850;
+}
+
 /* PRICING */
 
 .pricing-grid {
@@ -375,7 +379,7 @@ textarea {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 29px;
-  background: #fff;
+  background: white;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
@@ -394,6 +398,7 @@ textarea {
   height: 4px;
   background: var(--blue);
   border-radius: 0 0 8px 8px;
+  color: transparent;
 }
 
 .card-top {
@@ -502,7 +507,7 @@ textarea {
 .fees {
   margin-top: 22px;
   background: #0d1524;
-  color: #fff;
+  color: white;
   border-radius: 22px;
   padding: 26px;
   display: grid;
@@ -539,7 +544,7 @@ textarea {
 }
 
 .fee-item b {
-  color: #fff;
+  color: white;
 }
 
 /* FEATURES */
@@ -551,7 +556,7 @@ textarea {
 }
 
 .feature {
-  background: #fff;
+  background: white;
   border: 1px solid var(--line);
   border-radius: 20px;
   padding: 25px;
@@ -584,7 +589,6 @@ textarea {
 .steps {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
   border-top: 1px solid var(--line);
 }
 
@@ -624,7 +628,7 @@ textarea {
 
 .quote-section {
   background: #0b1220;
-  color: #fff;
+  color: white;
   padding: 100px 0;
 }
 
@@ -641,7 +645,7 @@ textarea {
 }
 
 .quote-copy h2 {
-  color: #fff;
+  color: white;
 }
 
 .quote-copy > p:not(.eyebrow) {
@@ -674,7 +678,7 @@ textarea {
 /* FORM */
 
 .quote-form {
-  background: #fff;
+  background: white;
   color: var(--ink);
   border-radius: 24px;
   padding: 28px;
@@ -769,7 +773,6 @@ textarea {
 
 .faq-list details {
   border-bottom: 1px solid var(--line);
-  padding: 0;
 }
 
 .faq-list summary {
@@ -806,7 +809,7 @@ textarea {
 
 footer {
   background: #080e18;
-  color: #fff;
+  color: white;
   padding: 65px 0 20px;
 }
 
@@ -838,7 +841,7 @@ footer {
 }
 
 .footer-grid > div:not(:first-child) > a:hover {
-  color: #fff;
+  color: white;
 }
 
 .footer-grid p {
@@ -867,7 +870,7 @@ footer {
 .socials a:hover {
   background: var(--blue);
   border-color: var(--blue);
-  color: #fff;
+  color: white;
 }
 
 .footer-bottom {
@@ -891,7 +894,7 @@ footer {
   right: 20px;
   bottom: 20px;
   background: #0b1220;
-  color: #fff;
+  color: white;
   padding: 13px 17px;
   border-radius: 12px;
   box-shadow: 0 15px 35px rgba(0, 0, 0, .2);
@@ -912,20 +915,6 @@ footer {
 
 @media (max-width: 900px) {
 
-  .hero-grid,
-  .quote-grid,
-  .faq-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding-top: 55px;
-  }
-
-  .quote-copy {
-    position: static;
-  }
-
   .pricing-grid {
     grid-template-columns: 1fr;
   }
@@ -936,6 +925,15 @@ footer {
 
   .fees {
     grid-template-columns: 1fr;
+  }
+
+  .quote-grid,
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-copy {
+    position: static;
   }
 
   .footer-grid {
@@ -969,7 +967,7 @@ footer {
     left: 14px;
     right: 14px;
     top: 60px;
-    background: #fff;
+    background: white;
     border: 1px solid var(--line);
     border-radius: 16px;
     padding: 10px;
@@ -1004,12 +1002,25 @@ footer {
     font-size: 16px;
   }
 
-  .section {
-    padding: 75px 0;
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .section-heading {
-    margin-bottom: 30px;
+  .promo-banner {
+    width: 100%;
+    max-width: 340px;
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+
+  .hero-note {
+    font-size: 12px;
+  }
+
+  .section {
+    padding: 75px 0;
   }
 
   .section-heading h2,
@@ -1057,7 +1068,7 @@ footer {
     left: 14px;
     right: 14px;
     background: var(--blue);
-    color: #fff;
+    color: white;
     text-align: center;
     padding: 14px;
     border-radius: 14px;
@@ -1069,17 +1080,5 @@ footer {
     margin-bottom: 62px;
     flex-direction: column;
     gap: 6px;
-  }
-
-  .fees {
-    padding: 22px;
-  }
-
-  .promo-banner {
-    width: 100%;
-    max-width: 330px;
-    flex-direction: column;
-    text-align: center;
-    gap: 5px;
   }
 }
